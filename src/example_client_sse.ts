@@ -1,53 +1,54 @@
 /* eslint-disable no-console */
 /**
- * You need provide a path to MCP server and APIFY_API_TOKEN in .env file.
+ * Connect to the MCP server using SSE transport and call a tool.
+ * You need provide a path to URL to the server
  */
 
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js';
 import { CallToolResultSchema } from '@modelcontextprotocol/sdk/types.js';
-import dotenv from 'dotenv';
-
 import { EventSource } from 'eventsource';
 
-// Assign the polyfill to the global scope if necessary
-//@ts-ignore
-if (typeof global !== 'undefined' && !global.EventSource) {
-    //@ts-ignore
-    global.EventSource = EventSource;
+const SERVER_URL = 'http://localhost:3001/sse';
+
+// @ts-expect-error: EventSource may not be defined on globalThis
+if (typeof globalThis.EventSource === 'undefined') {
+    // @ts-expect-error: Assigning a property that TypeScript doesn't currently recognize on globalThis
+    globalThis.EventSource = EventSource;
 }
 
+async function main(): Promise<void> {
+    const transport = new SSEClientTransport(new URL(SERVER_URL)
+    );
+    const client = new Client(
+        { name: 'example-client', version: '1.0.0' },
+        { capabilities: {} },
+    );
 
-dotenv.config({ path: '../.env' });
-
-const transport = new SSEClientTransport(new URL('http://localhost:3001/sse'));
-const client = new Client(
-    { name: 'example-client', version: '1.0.0' },
-    { capabilities: {} }
-);
-
-// Main function to run the example client
-async function run() {
     try {
         // Connect to the MCP server
         await client.connect(transport);
 
         // List available tools
-        const tools = await client.listTools()
+        const tools = await client.listTools();
         console.log('Available tools:', tools);
 
         // Call a tool
-        console.log('Calling rag web browser ...');
+        console.log('Calling "search" tool ...');
         const results = await client.callTool(
-            {name: 'search', arguments: { query: 'web browser for Anthropic' }},
-            CallToolResultSchema
+            { name: 'search', arguments: { query: 'web browser for Anthropic' } },
+            CallToolResultSchema,
         );
+        console.log('Tool result:', JSON.stringify(results, null, 2));
 
-        console.log('Tool result:', JSON.stringify(results));
-    } catch (error) {
-        console.error('Error:', error);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            console.error('Error:', error.message);
+            console.error(error.stack);
+        } else {
+            console.error('An unknown error occurred:', error);
+        }
     }
 }
 
-// Execute the main function
-await run();
+await main();

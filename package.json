@@ -20,7 +20,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.33.1",
     "@anthropic-ai/tokenizer": "^0.0.4",
-    "@modelcontextprotocol/sdk": "0.6.0",
+    "@modelcontextprotocol/sdk": "^1.0.4",
     "dotenv": "^16.4.7",
     "eventsource": "^3.0.2",
     "express": "^4.21.2",

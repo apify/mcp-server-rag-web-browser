@@ -24,13 +24,8 @@ const transport = new StdioClientTransport({
 
 // Create a new client instance
 const client = new Client(
-    {
-        name: 'example-client',
-        version: '1.0.0',
-    },
-    {
-        capabilities: {}, // Optional capabilities
-    },
+    { name: 'example-client', version: '1.0.0' },
+    { capabilities: {} },
 );
 
 // Main function to run the example client
