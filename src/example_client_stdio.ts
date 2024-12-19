@@ -6,7 +6,7 @@
 
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
-import { ListToolsResultSchema, CallToolResultSchema } from '@modelcontextprotocol/sdk/types.js';
+import { CallToolResultSchema } from '@modelcontextprotocol/sdk/types.js';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '../.env' });
@@ -40,22 +40,13 @@ async function run() {
         await client.connect(transport);
 
         // List available tools
-        const tools = await client.request(
-            { method: 'tools/list' },
-            ListToolsResultSchema,
-        );
+        const tools = await client.listTools();
         console.log('Available tools:', tools);
 
         // Call a tool
         console.log('Calling rag web browser ...');
-        const result = await client.request(
-            {
-                method: 'tools/call',
-                params: {
-                    name: 'search',
-                    arguments: { query: 'web browser for Anthropic' },
-                },
-            },
+        const result = await client.callTool(
+            { name: 'search', arguments: { query: 'web browser for Anthropic' } },
             CallToolResultSchema,
         );
         console.log('Tool result:', JSON.stringify(result));

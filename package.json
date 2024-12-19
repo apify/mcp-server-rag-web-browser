@@ -22,6 +22,7 @@
     "@anthropic-ai/tokenizer": "^0.0.4",
     "@modelcontextprotocol/sdk": "0.6.0",
     "dotenv": "^16.4.7",
+    "eventsource": "^3.0.2",
     "express": "^4.21.2",
     "node-fetch": "^3.3.2",
     "zod": "^3.24.1",
