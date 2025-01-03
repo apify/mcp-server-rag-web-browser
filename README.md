@@ -79,7 +79,7 @@ Configure Claude Desktop to recognize the MCP server.
       "mcp-server-rag-web-browser": {
         "command": "npx",
         "args": [
-          "/path/to/mcp-server-rag-web-browser/build/index.js",
+          "/path/to/mcp-server-rag-web-browser/build/index.js"
         ]
         "env": {
            "APIFY-API-TOKEN": "your-apify-api-token"
