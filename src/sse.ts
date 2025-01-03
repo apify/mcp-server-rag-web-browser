@@ -10,13 +10,13 @@ const app = express();
 let transport: SSEServerTransport;
 
 app.get('/sse', async (_req, res) => {
-    console.log('Received connection'); // eslint-disable-line no-console
+    console.log(`Received message at: ${_req.url}`); // eslint-disable-line no-console
     transport = new SSEServerTransport('/message', res);
     await server.connect(transport);
 });
 
 app.post('/message', async (req, res) => {
-    console.log('Received message'); // eslint-disable-line no-console
+    console.log(`Received message at: ${req.url}`); // eslint-disable-line no-console
     await transport.handlePostMessage(req, res);
 });
 
