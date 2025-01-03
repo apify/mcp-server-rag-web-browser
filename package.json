@@ -18,12 +18,15 @@
     "lint:fix": "eslint ./src --ext .ts --fix"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "0.6.0",
+    "@anthropic-ai/sdk": "^0.33.1",
+    "@anthropic-ai/tokenizer": "^0.0.4",
+    "@modelcontextprotocol/sdk": "^1.0.4",
     "dotenv": "^16.4.7",
+    "eventsource": "^3.0.2",
     "express": "^4.21.2",
     "node-fetch": "^3.3.2",
     "zod": "^3.24.1",
-    "zod-to-json-schema": "^3.23.5"
+    "zod-to-json-schema": "^3.24.1"
   },
   "devDependencies": {
     "@apify/eslint-config-ts": "^0.4.1",

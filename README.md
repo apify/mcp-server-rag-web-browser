@@ -45,6 +45,26 @@ The server does not provide any resources and prompts.
 
 ### Install
 
+Follow the steps below to set up and run the server on your local machine:
+First, clone the repository using the following command:
+
+```bash
+git clone git@github.com:apify/mcp-server-rag-web-browser.git
+```
+
+Navigate to the project directory and install the required dependencies:
+
+```bash
+cd mcp-server-rag-web-browser
+npm install
+```
+
+Before running the server, you need to build the project:
+
+```bash
+npm run build
+```
+
 #### Claude Desktop
 
 Configure Claude Desktop to recognize the MCP server.
@@ -59,7 +79,7 @@ Configure Claude Desktop to recognize the MCP server.
       "mcp-server-rag-web-browser": {
         "command": "npx",
         "args": [
-          "/path/to/mcp-server-rag-web-browser/build/index.js",
+          "/path/to/mcp-server-rag-web-browser/build/index.js"
         ]
         "env": {
            "APIFY-API-TOKEN": "your-apify-api-token"
@@ -85,30 +105,84 @@ Configure Claude Desktop to recognize the MCP server.
 
 ## 👷🏼 Development
 
-### Local Development
+### Simple local client (stdio)
 
-If you're working on an unpublished server, you can access the local server via the following command:
-
-```text
-"mcpServers": {
-    "mcp-server-rag-web-browser": {
-      "command": "/path/to/mcp-server-rag-web-browser/build/index.js",
-    }
-    "env": {
-        "APIFY-API-TOKEN": "your-apify-api-token"
-    }
-}
-```
-
-### Local client
-
-To test the server locally, you can use `example_client`:
+To test the server locally, you can use `example_client_stdio.ts`:
 
 ```bash
-node build/example_client.js
+node build/example_client_stdio.js
 ```
 
 The script will start the MCP server, fetch available tools, and then call the `search` tool with a query.
+
+### Chat local client (stdio)
+
+To run simple chat client, you can use `example_chat_stdio.ts`:
+
+```bash
+node build/example_chat_stdio.js
+```
+Here you can interact with the server using the chat interface.
+
+### Test Server-Sent Events (SSE) Transport
+
+The SSE transport enables **server-to-client streaming** while using **HTTP POST requests** for client-to-server communication.
+
+#### Step 1: Start the Server
+
+Start the server with the following command:
+
+```bash
+node build/sse.js
+```
+
+The server will start and listen on `http://localhost:3001`.
+
+#### Step 2: Connect to the SSE Server (Client)
+
+To connect to the SSE server, use the following command (acting as the client):
+
+```bash
+curl -X GET http://localhost:3001/sse
+```
+
+Upon connection, you will receive a message containing the `sessionId`, for example:
+
+```text
+event: endpoint
+data: /message?sessionId=7bd075c8-bbd1-4854-884c-e6c837148b7b
+```
+
+#### Step 3: Send a Message to the Server
+
+You can send a message to the server by making a POST request with the `sessionId` and your query:
+
+```bash
+curl -X POST "http://localhost:3001/message?session_id=181c7a3d-01a9-498e-8e16-5d5878832cd7" -H "Content-Type: application/json" -d '{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/call",
+  "params": {
+    "arguments": { "query": "recent news about LLMs" },
+    "name": "search"
+  }
+}'
+```
+
+#### Step 4: Receive the Response
+
+For the POST request, the server will respond with:
+
+```text
+Accepted
+```
+
+The server will then invoke the `search` tool using the provided query and stream the response back to the client via SSE:
+
+```text
+event: message
+data: {"result":{"content":[{"type":"text","text":"[{\"searchResult\":{\"title\":\"Language models recent news\",\"description\":\"Amazon Launches New Generation of LLM Foundation Model...\"}}
+```
 
 ### Debugging
 
