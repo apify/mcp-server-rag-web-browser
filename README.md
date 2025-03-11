@@ -1,5 +1,6 @@
 # Model Context Protocol (MCP) Server for the RAG Web Browser Actor 🌐
 
+[![smithery badge](https://smithery.ai/badge/mcp-server-rag-web-browser)](https://smithery.ai/server/mcp-server-rag-web-browser)
 Implementation of an MCP server for the [RAG Web Browser Actor](https://apify.com/apify/rag-web-browser).
 This Actor serves as a web browser for large language models (LLMs) and RAG pipelines, similar to a web search in ChatGPT.
 
@@ -46,6 +47,14 @@ The server does not provide any resources and prompts.
 - [Apify API Token](https://docs.apify.com/platform/integrations/api#api-token) (`APIFY_API_TOKEN`)
 
 ### Install
+
+#### Installing via Smithery
+
+To install the MCP Server for the RAG Web Browser Actor for Claude Desktop automatically via [Smithery](https://smithery.ai/server/mcp-server-rag-web-browser):
+
+```bash
+npx -y @smithery/cli install mcp-server-rag-web-browser --client claude
+```
 
 Follow the steps below to set up and run the server on your local machine:
 First, clone the repository using the following command:
