@@ -8,8 +8,6 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import type { Transport } from '@modelcontextprotocol/sdk/shared/transport.js';
 import {
     CallToolRequestSchema,
-    GetPromptRequestSchema,
-    ListPromptsRequestSchema,
     ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 import dotenv from 'dotenv';
@@ -32,27 +30,12 @@ const WebBrowserArgsSchema = z.object({
         .describe(
             'The maximum number of top organic Google Search results whose web pages will be extracted',
         ),
+    scrapingTool: z.enum(['browser-playwright', 'raw-http'])
+        .describe('Select a scraping tool for extracting the target web pages. '
+        + 'The Browser tool is more powerful and can handle JavaScript heavy websites, while the '
+        + 'Plain HTML tool can not handle JavaScript but is about two times faster.')
+        .default('raw-http'),
 });
-
-const PROMPTS = [
-    {
-        name: TOOL_SEARCH,
-        description: 'Search phrase or a URL at Google and return crawled web pages as text or Markdown',
-        arguments: [
-            {
-                name: 'query',
-                description: 'Google Search keywords or a URL of a specific web page',
-                required: true,
-            },
-            {
-                name: 'maxResults',
-                description: 'The maximum number of top organic Google Search results whose web pages'
-                    + ' will be extracted (default: 1)',
-                required: false,
-            },
-        ],
-    },
-];
 
 /**
  * Create an MCP server with a tool to call RAG Web Browser Actor
@@ -74,11 +57,10 @@ export class RagWebBrowserServer {
             },
         );
         this.setupErrorHandling();
-        this.setupPromptHandlers();
         this.setupToolHandlers();
     }
 
-    private async callRagWebBrowser(query: string, maxResults: number): Promise<string> {
+    private async callRagWebBrowser(query: string, maxResults: number, scrapingTool: string): Promise<string> {
         if (!APIFY_API_TOKEN) {
             throw new Error('APIFY_API_TOKEN is required but not set. '
                 + 'Please set it in your environment variables or pass it as a command-line argument.');
@@ -87,6 +69,7 @@ export class RagWebBrowserServer {
         const queryParams = new URLSearchParams({
             query,
             maxResults: maxResults.toString(),
+            scrapingTool,
         });
         const url = `${ACTOR_BASE_URL}?${queryParams.toString()}`;
         const response = await fetch(url, {
@@ -114,43 +97,14 @@ export class RagWebBrowserServer {
         });
     }
 
-    private setupPromptHandlers(): void {
-        this.server.setRequestHandler(ListPromptsRequestSchema, async () => {
-            return {
-                prompts: PROMPTS,
-            };
-        });
-
-        this.server.setRequestHandler(GetPromptRequestSchema, async (request) => {
-            const { name, arguments: args } = request.params;
-            switch (name) {
-                case TOOL_SEARCH: {
-                    const parsed = WebBrowserArgsSchema.parse(args);
-                    const content = await this.callRagWebBrowser(parsed.query, parsed.maxResults);
-                    return {
-                        description: `Markdown content for search query: ${parsed.query}`,
-                        messages: [
-                            {
-                                role: 'user',
-                                content: { type: 'text', text: content },
-                            },
-                        ],
-                    };
-                }
-                default: {
-                    throw new Error(`Unknown prompt: ${name}`);
-                }
-            }
-        });
-    }
-
     private setupToolHandlers(): void {
         this.server.setRequestHandler(ListToolsRequestSchema, async () => {
             return {
                 tools: [
                     {
                         name: TOOL_SEARCH,
-                        description: 'Search phrase or a URL at Google and return crawled web pages as text or Markdown',
+                        description: 'Search phrase or a URL at Google and return crawled web pages as text or Markdown. '
+                            + 'Prefer HTTP client for speed and browser-playwright for reability.',
                         inputSchema: zodToJsonSchema(WebBrowserArgsSchema),
                     },
                 ],
@@ -161,7 +115,7 @@ export class RagWebBrowserServer {
             switch (name) {
                 case TOOL_SEARCH: {
                     const parsed = WebBrowserArgsSchema.parse(args);
-                    const content = await this.callRagWebBrowser(parsed.query, parsed.maxResults);
+                    const content = await this.callRagWebBrowser(parsed.query, parsed.maxResults, parsed.scrapingTool);
                     return {
                         content: [{ type: 'text', text: content }],
                     };
