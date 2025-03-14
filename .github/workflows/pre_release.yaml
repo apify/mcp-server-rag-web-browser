@@ -101,8 +101,8 @@ jobs:
 #                run: node ./.github/scripts/before-beta-release.cjs
             -   name: Build module
                 run: npm run build
-            -   name: Publish to NPM
-                run: npm publish
+            -   name: Unpublish npm package
+                run: unpublish --force
 
 env:
     NODE_AUTH_TOKEN: ${{ secrets.APIFY_SERVICE_ACCOUNT_NPM_TOKEN }}
