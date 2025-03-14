@@ -1,21 +1,46 @@
 {
   "name": "mcp-server-rag-web-browser",
   "version": "0.1.0",
-  "description": "A MCP Server for the RAG Web Browser Actor",
-  "private": true,
   "type": "module",
+  "description": "An MCP Server for RAG Web Browser Actor",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "main": "dist/index.js",
   "bin": {
-    "mcp-server-rag-web-browser": "./build/index.js"
+    "mcp-rag-web-browser": "./dist/index.js"
   },
   "files": [
-    "build"
+    "dist",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apify/mcp-server-rag-web-browser"
+  },
+  "bugs": {
+    "url": "https://github.com/apify/mcp-server-rag-web-browser/issues"
+  },
+  "homepage": "https://github.com/apify/mcp-server-rag-web-browser",
+  "keywords": [
+    "apify",
+    "mcp",
+    "server",
+    "actors",
+    "model context protocol",
+    "rag",
+    "web browser"
   ],
   "scripts": {
-    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
-    "prepare": "npm run build",
+    "start": "npm run start:dev",
+    "start:prod": "node dist/main.js",
+    "start:dev": "tsx src/main.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "build": "tsc",
     "watch": "tsc --watch",
-    "lint": "eslint ./src --ext .ts",
-    "lint:fix": "eslint ./src --ext .ts --fix"
+    "inspector": "npx @modelcontextprotocol/inspector dist/index.js",
+    "test": "vitest run"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.33.1",

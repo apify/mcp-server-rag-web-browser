@@ -1,4 +1,15 @@
 {
 	"extends": "./tsconfig.json",
-	"include": ["./src/**/*", "./test/**/*", "./scripts/**/*", "./types/**/*"]
-}
+	"include": [
+	  "src/**/*.ts",
+	  "tests/**/*.ts",
+	  "*.ts",
+	  "*.js",
+	  ".eslintrc.js"
+	],
+	"exclude": [
+	  "node_modules",
+	  "dist"
+	]
+  }
+  
