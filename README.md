@@ -5,20 +5,11 @@ This Actor serves as a web browser for large language models (LLMs) and RAG pipe
 
 <a href="https://glama.ai/mcp/servers/sr8xzdi3yv"><img width="380" height="200" src="https://glama.ai/mcp/servers/sr8xzdi3yv/badge" alt="mcp-server-rag-web-browser MCP server" /></a>
 
-## 🔄 What is model context protocol?
-
-The Model Context Protocol (MCP) enables AI applications (and AI agents), such as Claude Desktop, to connect to external tools and data sources.
-MCP is an open protocol that enables secure, controlled interactions between AI applications, AI Agents, and local or remote resources.
-
-For more information, see the [Model Context Protocol](https://modelcontextprotocol.org/) website or blogpost [What is MCP and why does it matter?](https://blog.apify.com/what-is-model-context-protocol/).
-
-## 🤖 How is MCP Server related to AI Agents?
-
-The Apify MCP Server exposes Apify's Actors through the MCP protocol, allowing AI Agents or frameworks that implement the MCP protocol to access all Apify Actors as tools for data extraction, web searching, and other tasks.
-
-To learn more about AI Agents, explore our blog post: [What are AI Agents?](https://blog.apify.com/what-are-ai-agents/) and browse Apify's curated [AI Agent collection](https://apify.com/store/collections/ai_agents). Wondering if AI Agents are suitable for your specific needs? Our guide [AI agent workflow: building an agent to query Apify datasets](https://blog.apify.com/ai-agent-workflow/) walks you through practical implementation considerations and use cases.
-
 ## 🎯 What does this MCP server do?
+
+This server is specifically designed to provide fast responses to AI agents and LLMs, allowing them to interact with the web and extract information from web pages.
+It runs locally and communicates with the [RAG Web Browser Actor](https://apify.com/apify/rag-web-browser) in [**Standby mode**](https://docs.apify.com/platform/actors/running/standby),
+sending search queries and receiving extracted web content in response.
 
 The RAG Web Browser Actor allows an AI assistant to:
 - Perform web search, scrape the top N URLs from the results, and return their cleaned content as Markdown
@@ -35,6 +26,30 @@ The RAG Web Browser Actor allows an AI assistant to:
     - `scrapingTool` (string, optional): Select a scraping tool for extracting web pages. Options: 'browser-playwright' or 'raw-http' (default: 'raw-http')
     - `outputFormats` (array, optional): Select one or more formats for the output. Options: 'text', 'markdown', 'html' (default: ['markdown'])
     - `requestTimeoutSecs` (number, optional): Maximum time in seconds for the request (default: 40)
+
+## 🔄 What is the Model Context Protocol?
+
+The Model Context Protocol (MCP) is a framework that enables AI applications, such as Claude Desktop, to connect seamlessly with external tools and data sources.
+For more details, visit the [Model Context Protocol website](https://modelcontextprotocol.org/) or read the blog post [What is MCP and why does it matter?](https://blog.apify.com/what-is-model-context-protocol/).
+
+## 🤖 How does the MCP Server integrate with AI Agents?
+
+The MCP Server empowers AI Agents to perform web searches and browsing using the [RAG Web Browser Actor](https://apify.com/apify/rag-web-browser).
+For a comprehensive understanding of AI Agents, check out our blog post: [What are AI Agents?](https://blog.apify.com/what-are-ai-agents/) and explore Apify's [Agents](https://apify.com/store/categories/agents).
+Interested in building and monetizing your own AI agent on Apify? Check out our [step-by-step guide](https://blog.apify.com/how-to-build-an-ai-agent/) for creating, publishing, and monetizing AI agents on the Apify platform.
+
+## Related MCP Servers and Clients by Apify
+
+This server is designed to operate over standard input/output (stdio), providing a straightforward and efficient connection to AI Agents.
+
+For those who prefer not to run the MCP server locally, the RAG Web Browser Actor can be accessed directly via Server-Sent Events (SSE):
+- **🌐 [RAG Web Browser Actor via Server Sent Events (SSE)](https://apify.com/apify/rag-web-browser#anthropic-model-context-protocol-mcp-server)**
+
+If you're interested in additional web scraping and browsing tools, consider exploring the MCP Server Actor:
+- **🇦 [MCP Server Actor](https://apify.com/apify/actors-mcp-server)** – An HTTP server accessible through Server-Sent Events (SSE).
+
+Additionally, you can try the Tester MCP Client for a chat-like interface to interact with any SSE-based MCP server:
+- **💬 [Tester MCP Client](https://apify.com/jiri.spilka/tester-mcp-client)** – A user-friendly UI for engaging with the MCP server.
 
 ## 🛠️ Configuration
 
