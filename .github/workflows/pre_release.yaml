@@ -6,6 +6,7 @@ on:
         branches:
             - master
             - feat/refactor
+            - fix/ci
         tags-ignore:
             - "**" # Ignore all tags to prevent duplicate builds when tags are pushed.
 
