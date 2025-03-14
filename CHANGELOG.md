@@ -23,6 +23,7 @@ All notable changes to this project will be documented in this file.
 - Add dotenv package to dev ([b8e1e2f](https://github.com/apify/mcp-server-rag-web-browser/commit/b8e1e2fd32e675c64d3ccea020383acdfe551b67))
 - Unpublish package ([815c198](https://github.com/apify/mcp-server-rag-web-browser/commit/815c198b83b5171d03a122e52f2ba45ab4d300d5))
 - Publish package ([f7e9f16](https://github.com/apify/mcp-server-rag-web-browser/commit/f7e9f16e8d958e1fbcf71604df5d0cefa54da788))
+- Unpublish package ([a283327](https://github.com/apify/mcp-server-rag-web-browser/commit/a283327632a4882b65f853b7662e7dd496153dd9))
 
 
 <!-- git-cliff-unreleased-end -->
