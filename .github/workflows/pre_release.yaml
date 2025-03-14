@@ -102,7 +102,7 @@ jobs:
             -   name: Build module
                 run: npm run build
             -   name: Deprecate npm package
-                run: npm deprecate mcp-server-rag-web-browser "This package is deprecated. '@apify/mcp-server-rag-web-browser'"
+                run: npm deprecate mcp-server-rag-web-browser "This package has been deprecated. Use https://www.npmjs.com/package/@apify/mcp-server-rag-web-browser"
             -   name: Unpublish npm package
                 run: npm unpublish --force
             -   name: Unpublish npm package
