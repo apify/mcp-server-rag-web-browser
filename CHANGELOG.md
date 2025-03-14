@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - Update readme ([e29d233](https://github.com/apify/mcp-server-rag-web-browser/commit/e29d2333abce24ac6ae55045a506abca5bfdf225))
 - Ci ([0d8fce6](https://github.com/apify/mcp-server-rag-web-browser/commit/0d8fce6b1e693d75a7afd2e43e2b04255b9d3be0))
 - Ci ([bc47864](https://github.com/apify/mcp-server-rag-web-browser/commit/bc478647e49895080d355d05eb99583645b0461f))
+- Ci ([e4c084e](https://github.com/apify/mcp-server-rag-web-browser/commit/e4c084e9d0cd2c1ed78eb32f6161694fcbcec551))
 
 ### 🐛 Bug Fixes
 
