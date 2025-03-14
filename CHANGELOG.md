@@ -26,6 +26,7 @@ All notable changes to this project will be documented in this file.
 - Unpublish package ([a283327](https://github.com/apify/mcp-server-rag-web-browser/commit/a283327632a4882b65f853b7662e7dd496153dd9))
 - Unpublish package ([0051f23](https://github.com/apify/mcp-server-rag-web-browser/commit/0051f231136489c96a0164caa6fc092bd2a4ef8e))
 - Unpublish package, again ([6302f67](https://github.com/apify/mcp-server-rag-web-browser/commit/6302f67a5f7085de6b95bf0e27ee66046dac9d99))
+- Unpublish package, again ([18e81b9](https://github.com/apify/mcp-server-rag-web-browser/commit/18e81b90ba8a2e57df541082e1adea5c5ead9937))
 
 
 <!-- git-cliff-unreleased-end -->
