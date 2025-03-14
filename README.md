@@ -36,20 +36,20 @@ For more details, visit the [Model Context Protocol website](https://modelcontex
 
 The MCP Server empowers AI Agents to perform web searches and browsing using the [RAG Web Browser Actor](https://apify.com/apify/rag-web-browser).
 For a comprehensive understanding of AI Agents, check out our blog post: [What are AI Agents?](https://blog.apify.com/what-are-ai-agents/) and explore Apify's [Agents](https://apify.com/store/categories/agents).
+
 Interested in building and monetizing your own AI agent on Apify? Check out our [step-by-step guide](https://blog.apify.com/how-to-build-an-ai-agent/) for creating, publishing, and monetizing AI agents on the Apify platform.
 
-## Related MCP Servers and Clients by Apify
+## 🔌 Related MCP servers and clients by Apify
 
-This server is designed to operate over standard input/output (stdio), providing a straightforward and efficient connection to AI Agents.
+This server operates over standard input/output (stdio), providing a straightforward connection to AI Agents. Apify offers several other MCP-related tools:
 
-For those who prefer not to run the MCP server locally, the RAG Web Browser Actor can be accessed directly via Server-Sent Events (SSE):
-- **🌐 [RAG Web Browser Actor via Server Sent Events (SSE)](https://apify.com/apify/rag-web-browser#anthropic-model-context-protocol-mcp-server)**
+### Server Options
+- **🖥️ This MCP Server** – A local stdio-based server for direct integration with Claude Desktop
+- **🌐 [RAG Web Browser Actor via SSE](https://apify.com/apify/rag-web-browser#anthropic-model-context-protocol-mcp-server)** – Access the RAG Web Browser directly via Server-Sent Events without running a local server
+- **🇦 [MCP Server Actor](https://apify.com/apify/actors-mcp-server)** – MCP Server that provides AI agents with access to over 4,000 specialized [Apify Actors](https://apify.com/store)
 
-If you're interested in additional web scraping and browsing tools, consider exploring the MCP Server Actor:
-- **🇦 [MCP Server Actor](https://apify.com/apify/actors-mcp-server)** – An HTTP server accessible through Server-Sent Events (SSE).
-
-Additionally, you can try the Tester MCP Client for a chat-like interface to interact with any SSE-based MCP server:
-- **💬 [Tester MCP Client](https://apify.com/jiri.spilka/tester-mcp-client)** – A user-friendly UI for engaging with the MCP server.
+### Client Options
+- **💬 [Tester MCP Client](https://apify.com/jiri.spilka/tester-mcp-client)** – A user-friendly UI for interacting with any SSE-based MCP server
 
 ## 🛠️ Configuration
 
