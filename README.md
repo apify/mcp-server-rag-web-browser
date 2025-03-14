@@ -19,13 +19,12 @@ The RAG Web Browser Actor allows an AI assistant to:
 
 ### Tools
 
-- **search**: Query Google Search, scrape the top N URLs from the results, and returns their cleaned content as Markdown.
-  - Arguments:
-    - `query` (string, required): Search term or URL
-    - `maxResults` (number, optional): Maximum number of search results to scrape (default: 1)
-    - `scrapingTool` (string, optional): Select a scraping tool for extracting web pages. Options: 'browser-playwright' or 'raw-http' (default: 'raw-http')
-    - `outputFormats` (array, optional): Select one or more formats for the output. Options: 'text', 'markdown', 'html' (default: ['markdown'])
-    - `requestTimeoutSecs` (number, optional): Maximum time in seconds for the request (default: 40)
+- **search**: Query Google Search, scrape the top N URLs from the results, and returns their cleaned content as Markdown. Arguments:
+  - `query` (string, required): Search term or URL
+  - `maxResults` (number, optional): Maximum number of search results to scrape (default: 1)
+  - `scrapingTool` (string, optional): Select a scraping tool for extracting web pages. Options: 'browser-playwright' or 'raw-http' (default: 'raw-http')
+  - `outputFormats` (array, optional): Select one or more formats for the output. Options: 'text', 'markdown', 'html' (default: ['markdown'])
+  - `requestTimeoutSecs` (number, optional): Maximum time in seconds for the request (default: 40)
 
 ## 🔄 What is the Model Context Protocol?
 
