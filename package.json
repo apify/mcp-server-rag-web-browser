@@ -1,6 +1,6 @@
 {
   "name": "@apify/mcp-server-rag-web-browser",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "type": "module",
   "description": "An MCP Server for RAG Web Browser Actor",
   "engines": {
