@@ -21,6 +21,7 @@ All notable changes to this project will be documented in this file.
 
 - Lint issues ([8d7945a](https://github.com/apify/mcp-server-rag-web-browser/commit/8d7945af905ed264a5a41fdb0984935440e5c04f))
 - Add dotenv package to dev ([b8e1e2f](https://github.com/apify/mcp-server-rag-web-browser/commit/b8e1e2fd32e675c64d3ccea020383acdfe551b67))
+- Unpublish package ([815c198](https://github.com/apify/mcp-server-rag-web-browser/commit/815c198b83b5171d03a122e52f2ba45ab4d300d5))
 
 
 <!-- git-cliff-unreleased-end -->
