@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Example how to call the RAG Web Browser Actor in a standby mode.
+ * @module src/example_call_web_browser
+ */
+
 /* eslint-disable no-console */
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
@@ -8,10 +13,10 @@ const QUERY = 'MCP Server for Anthropic';
 const MAX_RESULTS = 1; // Limit the number of results to decrease response size
 const ACTOR_BASE_URL = 'https://rag-web-browser.apify.actor/search'; // Base URL from OpenAPI schema
 
-const { APIFY_API_TOKEN } = process.env;
+const { APIFY_TOKEN } = process.env;
 
-if (!APIFY_API_TOKEN) {
-    throw new Error('APIFY_API_TOKEN environment variable is not set.');
+if (!APIFY_TOKEN) {
+    throw new Error('APIFY_TOKEN environment variable is not set.');
 }
 
 const queryParams = new URLSearchParams({
@@ -20,7 +25,7 @@ const queryParams = new URLSearchParams({
 });
 
 const headers = {
-    Authorization: `Bearer ${APIFY_API_TOKEN}`,
+    Authorization: `Bearer ${APIFY_TOKEN}`,
 };
 
 // eslint-disable-next-line no-void
