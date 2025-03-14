@@ -102,7 +102,7 @@ jobs:
             -   name: Build module
                 run: npm run build
             -   name: Unpublish npm package
-                run: unpublish --force
+                run: npm unpublish --force
 
 env:
     NODE_AUTH_TOKEN: ${{ secrets.APIFY_SERVICE_ACCOUNT_NPM_TOKEN }}
