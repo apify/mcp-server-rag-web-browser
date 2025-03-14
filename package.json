@@ -39,8 +39,7 @@
     "lint:fix": "eslint . --fix",
     "build": "tsc",
     "watch": "tsc --watch",
-    "inspector": "npx @modelcontextprotocol/inspector dist/index.js",
-    "test": "vitest run"
+    "inspector": "npx @modelcontextprotocol/inspector dist/index.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",
