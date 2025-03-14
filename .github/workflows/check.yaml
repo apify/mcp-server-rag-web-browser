@@ -9,6 +9,7 @@ on:
     push:
         branches:
             - master
+            - feat/refactor
         tags-ignore:
             - "**" # Ignore all tags to prevent duplicate builds when tags are pushed.
 
