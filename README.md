@@ -92,10 +92,10 @@ Configure Claude Desktop to recognize the MCP server.
 
     ```text
     "mcpServers": {
-      "mcp-server-rag-web-browser": {
+      "rag-web-browser": {
         "command": "npx",
         "args": [
-          "/path/to/mcp-server-rag-web-browser/dist/index.js"
+          "@apify/mcp-server-rag-web-browser"
         ],
         "env": {
            "APIFY_TOKEN": "your-apify-api-token"
@@ -118,6 +118,12 @@ Configure Claude Desktop to recognize the MCP server.
     What is an LLM, and what are the recent news updates?
     Find and analyze recent research papers about LLMs.
     ```
+
+Debug the server using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector)
+```bash
+export APIFY_TOKEN=your-apify-api-token
+npx @modelcontextprotocol/inspector npx -y @apify/mcp-server-rag-web-browser
+```
 
 ## 👷🏼 Development
 
