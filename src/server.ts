@@ -118,7 +118,7 @@ export class RagWebBrowserServer {
                     {
                         name: TOOL_SEARCH,
                         description: 'Search phrase or a URL at Google and return crawled web pages as text or Markdown. '
-                            + 'Prefer HTTP client for speed and browser-playwright for reability.',
+                            + 'Prefer HTTP raw client for speed and browser-playwright for reliability.',
                         inputSchema: zodToJsonSchema(WebBrowserArgsSchema),
                     },
                 ],
