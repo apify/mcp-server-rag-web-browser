@@ -1,44 +1,63 @@
 {
-  "name": "mcp-server-rag-web-browser",
+  "name": "@apify/mcp-server-rag-web-browser",
   "version": "0.1.0",
-  "description": "A MCP Server for the RAG Web Browser Actor",
-  "private": true,
   "type": "module",
+  "description": "An MCP Server for RAG Web Browser Actor",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "main": "dist/index.js",
   "bin": {
-    "mcp-server-rag-web-browser": "./build/index.js"
+    "mcp-rag-web-browser": "./dist/index.js"
   },
   "files": [
-    "build"
+    "dist",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apify/mcp-server-rag-web-browser"
+  },
+  "bugs": {
+    "url": "https://github.com/apify/mcp-server-rag-web-browser/issues"
+  },
+  "homepage": "https://github.com/apify/mcp-server-rag-web-browser",
+  "keywords": [
+    "apify",
+    "mcp",
+    "server",
+    "actors",
+    "model context protocol",
+    "rag",
+    "web browser"
   ],
   "scripts": {
-    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
-    "prepare": "npm run build",
+    "start": "npm run start:dev",
+    "start:prod": "node dist/index.js",
+    "start:dev": "tsx src/index.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "build": "tsc",
     "watch": "tsc --watch",
-    "lint": "eslint ./src --ext .ts",
-    "lint:fix": "eslint ./src --ext .ts --fix"
+    "inspector": "npx @modelcontextprotocol/inspector dist/index.js"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.33.1",
-    "@anthropic-ai/tokenizer": "^0.0.4",
     "@modelcontextprotocol/sdk": "^1.0.4",
-    "dotenv": "^16.4.7",
-    "eventsource": "^3.0.2",
     "express": "^4.21.2",
     "node-fetch": "^3.3.2",
     "zod": "^3.24.1",
     "zod-to-json-schema": "^3.24.1"
   },
   "devDependencies": {
+    "@apify/eslint-config": "^0.5.0-beta.7",
     "@apify/eslint-config-ts": "^0.4.1",
     "@apify/tsconfig": "^0.1.0",
     "@types/express": "^5.0.0",
     "@types/node": "^20.11.24",
-    "@typescript-eslint/eslint-plugin": "^8.18.0",
-    "@typescript-eslint/parser": "^8.18.0",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.31.0",
-    "tsx": "^4.19.2",
-    "typescript": "^5.3.3"
+    "dotenv": "^16.4.7",
+    "eslint": "^9.22.0",
+    "tsx": "^4.6.2",
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^8.18.2"
   }
 }
