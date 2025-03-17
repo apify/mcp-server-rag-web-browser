@@ -24,8 +24,10 @@ const transport = new StdioClientTransport({
     command: 'node', // Executable
     args: [
         SERVER_PATH,
-        `APIFY_TOKEN=${APIFY_TOKEN}`,
     ],
+    env: {
+        'APIFY_TOKEN': APIFY_TOKEN
+    }
 });
 
 // Create a new client instance
