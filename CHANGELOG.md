@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.0](https://github.com/apify/mcp-server-rag-web-browser/releases/tag/v0.1.0) (2025-03-17)
+
+### 🚀 Features
+
+- Example clients ([#10](https://github.com/apify/mcp-server-rag-web-browser/pull/10)) ([ad31f34](https://github.com/apify/mcp-server-rag-web-browser/commit/ad31f34045e3d5a01b41073af06bae33e89b1f32)) by [@jirispilka](https://github.com/jirispilka), closes [#8](https://github.com/apify/mcp-server-rag-web-browser/issues/8)
+- Add scraping tool option ([#13](https://github.com/apify/mcp-server-rag-web-browser/pull/13)) ([0dc796c](https://github.com/apify/mcp-server-rag-web-browser/commit/0dc796cea98e02e276fcc03e43514fa156a3018d)) by [@jirispilka](https://github.com/jirispilka)
+- Refactor server to simplify it ([#14](https://github.com/apify/mcp-server-rag-web-browser/pull/14)) ([bbd063b](https://github.com/apify/mcp-server-rag-web-browser/commit/bbd063b2b4fc58e1fd25c07908ec1e8355955c59)) by [@jirispilka](https://github.com/jirispilka)
+
+### 🐛 Bug Fixes
+
+- Update version ([#15](https://github.com/apify/mcp-server-rag-web-browser/pull/15)) ([1a05865](https://github.com/apify/mcp-server-rag-web-browser/commit/1a05865b4052b080a0dd758ec0e90ea1f7bdd14c)) by [@jirispilka](https://github.com/jirispilka)
+
+
 ## 0.1.1 (2025-03-14)
 
 ### 🐛 Bug Fixes
