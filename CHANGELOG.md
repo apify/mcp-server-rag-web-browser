@@ -2,15 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-<!-- git-cliff-unreleased-start -->
-## 0.1.3 - **not yet released**
+## [0.1.3](https://github.com/apify/mcp-server-rag-web-browser/releases/tag/v0.1.3) (2025-03-17)
 
 ### 🐛 Bug Fixes
 
 - Changelog, package ([#17](https://github.com/apify/mcp-server-rag-web-browser/pull/17)) ([9067509](https://github.com/apify/mcp-server-rag-web-browser/commit/9067509a12fda837456899b22a3432c8ff172f4f)) by [@jirispilka](https://github.com/jirispilka)
 
 
-<!-- git-cliff-unreleased-end -->
 ## [0.1.1](https://github.com/apify/mcp-server-rag-web-browser/releases/tag/v0.1.1) (2025-03-17)
 
 ### 🚀 Features
