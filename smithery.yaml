@@ -1,0 +1,18 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - apifyApiToken
+    properties:
+      apifyApiToken:
+        type: string
+        description: The API token for the Apify service, required to access RAG Web
+          Browser Actor functionality.
+  commandFunction:
+    # A function that produces the CLI command to start the MCP on stdio.
+    |-
+    (config) => ({ command: 'node', args: ['build/index.js'], env: { APIFY_API_TOKEN: config.apifyApiToken } })
