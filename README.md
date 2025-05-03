@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/apify-mcp-server-rag-web-browser-badge.png)](https://mseep.ai/app/apify-mcp-server-rag-web-browser)
+
 # Model Context Protocol (MCP) Server for the RAG Web Browser Actor 🌐
 
 Implementation of an MCP server for the [RAG Web Browser Actor](https://apify.com/apify/rag-web-browser).
