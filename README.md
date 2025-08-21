@@ -3,7 +3,7 @@
 Implementation of an MCP server for the [RAG Web Browser Actor](https://apify.com/apify/rag-web-browser).
 This Actor serves as a web browser for large language models (LLMs) and RAG pipelines, similar to a web search in ChatGPT.
 
-> **This MCP server is deprecated in favor of mcp.apify.com**
+> **This MCP server is deprecated in favor of [mcp.apify.com](https://mcp.apify.com)**
 >
 > For the same functionality and much more, please use one of these alternatives:
 
@@ -44,7 +44,7 @@ This server is specifically designed to provide fast responses to AI agents and 
 It runs locally and communicates with the [RAG Web Browser Actor](https://apify.com/apify/rag-web-browser) in [**Standby mode**](https://docs.apify.com/platform/actors/running/standby),
 sending search queries and receiving extracted web content in response.
 
-- **Web Search**: Query Google Search, scrape top N URLs, return cleaned content as Markdown
+- **Web Search**: Query Google Search, scrape top N URLs, and return cleaned content as Markdown
 - **Single URL Fetching**: Fetch a specific URL and return its content as Markdown
 - **Local MCP Integration**: Standard input/output (stdio) communication with AI clients
 
@@ -145,7 +145,7 @@ Upon launching, the Inspector will display a URL that you can access in your bro
 - [How to use MCP with Apify Actors](https://blog.apify.com/how-to-use-mcp/)
 - [Tester MCP Client](https://apify.com/jiri.spilka/tester-mcp-client)
 - [Webinar: Building and Monetizing MCP Servers on Apify](https://www.youtube.com/watch?v=w3AH3jIrXXo)
-- [MCP Client development guide](https://github.com/cyanheads/model-context-protocol-resources/blob/main/guides/mcp-client-development-guide.md)
 - [How to build and monetize an AI agent on Apify](https://blog.apify.com/how-to-build-an-ai-agent/)
+- [Build and deploy MCP servers in minutes with a TypeScript template](https://blog.apify.com/build-and-deploy-mcp-servers-typescript/)
 
 *This repository is maintained for archival purposes only. Please use the recommended alternatives above for active development.*
