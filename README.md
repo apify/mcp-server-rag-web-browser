@@ -7,7 +7,7 @@ This Actor serves as a web browser for large language models (LLMs) and RAG pipe
 >
 > For the same functionality and much more, please use one of these alternatives:
 
-## 🚀 **Recommended: Use mcp.apify.com**
+## 🚀 Recommended: use mcp.apify.com
 
 The easiest way to get the same web browsing capabilities is to use **[mcp.apify.com](https://mcp.apify.com)** with default settings.
 
@@ -19,13 +19,14 @@ The easiest way to get the same web browsing capabilities is to use **[mcp.apify
 - ✅ Dynamic tool discovery
 
 **Quick Setup:**
-1. Go to [mcp.apify.com](https://mcp.apify.com)
-2. Connect your MCP `client (Claude.ai, VS Code, etc.)
-3. Start using web browsing and other tools immediately`
-4.
-## 🌐 **Alternative: Direct RAG Web Browser Integration**
+1. Go to https://mcp.apify.com
+2. Authorize the client (Claude, VS Code, etc.)
+3. Copy the generated MCP server configuration (or use OAuth flow if supported)
+4. Start using browsing & other tools immediately
 
-You can also use the [RAG Web Browser Actor](https://apify.com/apify/rag-web-browser) directly, which provides an SSE endpoint for real-time integration.
+## 🌐 Alternative: direct RAG Web Browser integration
+
+You can also call the [RAG Web Browser Actor](https://apify.com/apify/rag-web-browser) directly via its HTTP/SSE interface.
 
 **Benefits:**
 - ✅ Direct integration without mcp.apify.com
@@ -33,7 +34,7 @@ You can also use the [RAG Web Browser Actor](https://apify.com/apify/rag-web-bro
 - ✅ Full control over the integration
 - ✅ No additional dependencies
 
-**Documentation:** [RAG Web Browser Actor Documentation](https://apify.com/apify/rag-web-browser#anthropic-model-context-protocol-mcp-server)
+**Docs:** [Actor Documentation](https://apify.com/apify/rag-web-browser#anthropic-model-context-protocol-mcp-server)
 
 ---
 
@@ -51,19 +52,23 @@ sending search queries and receiving extracted web content in response.
 
 ### Tools
 
-- **search**: Query Google Search, scrape the top N URLs from the results, and returns their cleaned content as Markdown. Arguments:
-  - `query` (string, required): Search term or URL
-  - `maxResults` (number, optional): Maximum number of search results to scrape (default: 1)
-  - `scrapingTool` (string, optional): Select a scraping tool for extracting web pages. Options: 'browser-playwright' or 'raw-http' (default: 'raw-http')
-  - `outputFormats` (array, optional): Select one or more formats for the output. Options: 'text', 'markdown', 'html' (default: ['markdown'])
-  - `requestTimeoutSecs` (number, optional): Maximum time in seconds for the request (default: 40)
+- name: `search`
+  description: Query Google Search OR fetch a direct URL and return cleaned page contents.
+  arguments:
+  - `query` (string, required): Search keywords or a full URL. Advanced Google operators supported.
+  - `maxResults` (number, optional, default: 1): Max organic results to fetch (ignored when `query` is a URL).
+  - `scrapingTool` (string, optional, default: `raw-http`): One of `browser-playwright` | `raw-http`.
+    - `raw-http`: Fast (no JS execution) – good for static pages.
+    - `browser-playwright`: Handles JS-heavy sites – slower, more robust.
+  - `outputFormats` (array of strings, optional, default: [`markdown`]): One or more of `text`, `markdown`, `html`.
+  - `requestTimeoutSecs` (number, optional, default: 40, min 1 max 300): Total server-side AND client wait budget. A local abort is enforced.
 
 
 ## 🔄 Migration Guide
 
 ### From Local MCP Server to mcp.apify.com
 
-**Before (Deprecated):**
+**Before (Deprecated local server):**
 ```json
 {
   "mcpServers": {
@@ -78,7 +83,7 @@ sending search queries and receiving extracted web content in response.
 }
 ```
 
-**After (Recommended):**
+**After (Recommended Apify server):**
 ```json
 {
   "mcpServers": {
@@ -92,28 +97,22 @@ sending search queries and receiving extracted web content in response.
   }
 }
 ```
-
-Or simply use the hosted endpoint: `https://mcp.apify.com`
+Or use the hosted endpoint: `https://mcp.apify.com` (when your client supports HTTP transport / remote MCP).
 
 ### MCP clients
-- [Claude Desktop](https://claude.ai/download)
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Apify Tester MCP Client](https://apify.com/jiri.spilka/tester-mcp-client)
+- Claude Desktop: https://claude.ai/download
+- Visual Studio Code
+- Apify Tester MCP Client: https://apify.com/jiri.spilka/tester-mcp-client
 
-## 🛠️ Development (For reference only)
+## 🛠️ Development
 
 ### Prerequisites
 - Node.js (v18 or higher)
-- [Apify API Token](https://docs.apify.com/platform/integrations/api#api-token) (`APIFY_TOKEN`)
+- Apify API Token (`APIFY_TOKEN`)
 
-First, clone the repository using the following command:
+Clone & install:
 ```bash
-git clone git@github.com:apify/mcp-server-rag-web-browser.git
-```
-
-Navigate to the project directory and install the required dependencies:
-
-```bash
+git clone https://github.com/apify/mcp-server-rag-web-browser.git
 cd mcp-server-rag-web-browser
 npm install
 ```

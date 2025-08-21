@@ -84,6 +84,9 @@ export class RagWebBrowserServer {
                 queryParams.append('outputFormats', format);
             });
         }
+        if (args.requestTimeoutSecs) {
+            queryParams.append('requestTimeoutSecs', args.requestTimeoutSecs.toString());
+        }
 
         const url = `${ACTOR_BASE_URL}?${queryParams.toString()}`;
         const response = await fetch(url, {
@@ -94,7 +97,7 @@ export class RagWebBrowserServer {
         });
 
         if (!response.ok) {
-            throw new Error(`Failed to call RAG Web Browser: ${response.statusText}`);
+            throw new Error(`Failed to call RAG Web Browser: ${response.status} ${response.statusText}`);
         }
 
         const responseBody = await response.json();
