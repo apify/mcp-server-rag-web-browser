@@ -1,4 +1,5 @@
 # MCP Server for the RAG Web Browser Actor 🌐
+[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/apify/mcp-server-rag-web-browser)](https://archestra.ai/mcp-catalog/apify__mcp-server-rag-web-browser)
 
 Implementation of an MCP server for the [RAG Web Browser Actor](https://apify.com/apify/rag-web-browser).
 This Actor serves as a web browser for large language models (LLMs) and RAG pipelines, similar to a web search in ChatGPT.
