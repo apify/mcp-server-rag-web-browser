@@ -149,3 +149,8 @@ Upon launching, the Inspector will display a URL that you can access in your bro
 - [Build and deploy MCP servers in minutes with a TypeScript template](https://blog.apify.com/build-and-deploy-mcp-servers-typescript/)
 
 *This repository is maintained for archival purposes only. Please use the recommended alternatives above for active development.*
+
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/apify-mcp-server-rag-web-browser).
+
