@@ -21,7 +21,7 @@ jobs:
             version_number: ${{ steps.release_metadata.outputs.version_number }}
             changelog: ${{ steps.release_metadata.outputs.changelog }}
         steps:
-            -   uses: apify/workflows/git-cliff-release@main
+            -   uses: apify/actions/git-cliff-release@v1.1.2
                 name: Prepare release metadata
                 id: release_metadata
                 with:
