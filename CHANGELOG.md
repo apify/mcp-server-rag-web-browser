@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+<!-- git-cliff-unreleased-start -->
+## 0.1.5 - **not yet released**
+
+
+<!-- git-cliff-unreleased-end -->
 ## [0.1.4](https://github.com/apify/mcp-server-rag-web-browser/releases/tag/v0.1.4) (2025-08-21)
 
 ### 🚀 Features
